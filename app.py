@@ -46,14 +46,6 @@ class URLData(BaseModel):
 class URLBatchRequest(BaseModel):
     urls: List[URLData]
 
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: Union[str, None] = None):
-    return {"item_id": item_id, "q": q}
-
-@app.put("/items/{item_id}")
-def update_item(item_id: int, item: URLData):
-    return {"item_name": item.urllength, "item_id": item_id}
-
 # Define a prediction endpoint for batch input
 @app.post("/predict/")
 def predict(batch_request: URLBatchRequest):
